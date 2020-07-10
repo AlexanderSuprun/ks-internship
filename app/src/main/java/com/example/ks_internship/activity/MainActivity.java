@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private void openSecondActivityForResult() {
         if (TextUtils.isEmpty(editText.getText())) {
             Toast.makeText(MainActivity.this,
-                    getString(R.string.toast_empty_text_field_text), Toast.LENGTH_LONG).show();
+                    getString(R.string.toast_empty_text_field_text), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -60,5 +60,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == Constants.REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(MainActivity.this,
+                        getString(R.string.toast_success_text), Toast.LENGTH_LONG).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                editText.setText("");
+            }
+        }
     }
 }
