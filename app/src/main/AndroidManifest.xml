@@ -3,6 +3,7 @@
     package="com.example.ks_internship">
 
     <application
+        android:name=".app.KsinternshipApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
