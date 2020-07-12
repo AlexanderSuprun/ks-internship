@@ -1,6 +1,5 @@
 package com.example.ks_internship.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,8 +14,8 @@ import com.example.ks_internship.utils.Constants;
 public class SecondActivity extends AppCompatActivity {
 
     private AppCompatTextView textView;
-    private AppCompatButton btn_ok;
-    private AppCompatButton btn_cancel;
+    private AppCompatButton btnOk;
+    private AppCompatButton btnCancel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,12 +32,12 @@ public class SecondActivity extends AppCompatActivity {
 
     private void initViews() {
         textView = findViewById(R.id.activity_second_textview);
-        btn_ok = findViewById(R.id.activity_second_btn_ok);
-        btn_cancel = findViewById(R.id.activity_second_btn_cancel);
+        btnOk = findViewById(R.id.activity_second_btn_ok);
+        btnCancel = findViewById(R.id.activity_second_btn_cancel);
     }
 
     private void setListeners() {
-        btn_ok.setOnClickListener(new View.OnClickListener() {
+        btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setResult(RESULT_OK);
@@ -46,7 +45,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setResult(RESULT_CANCELED);
