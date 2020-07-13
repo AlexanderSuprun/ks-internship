@@ -1,9 +1,17 @@
 <resources>
-    <string name="app_name">ks-internship</string>
+    <string name="app_name">KeepSolid Internship</string>
     <string name="activity_main_edit_text_hint">Write text…</string>
     <string name="activity_main_btn_text">Send</string>
     <string name="toast_empty_text_field_text">Text field is empty</string>
-    <string name="second_acivity_btn_ok_text">OK</string>
+    <string name="second_activity_btn_ok_text">OK</string>
     <string name="activity_second_btn_cancel_text">Cancel</string>
     <string name="toast_success_text">Success!</string>
+    <string name="favorite">Favorite</string>
+    <string name="action_first">Action 1</string>
+    <string name="action_second">Action 2</string>
+    <string name="action_third">Action 3</string>
+    <string name="toast_favorite_pressed">Favorite pressed</string>
+    <string name="toast_action_first_pressed">First action pressed</string>
+    <string name="toast_action_second_pressed">Second action pressed</string>
+    <string name="toast_action_third_pressed">Third action pressed</string>
 </resources>

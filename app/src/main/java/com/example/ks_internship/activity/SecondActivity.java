@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.ks_internship.R;
+import com.example.ks_internship.activity.base.BaseActivity;
 import com.example.ks_internship.utils.Constants;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends BaseActivity {
 
     private AppCompatTextView textView;
     private AppCompatButton btnOk;
@@ -24,6 +24,8 @@ public class SecondActivity extends AppCompatActivity {
 
         initViews();
         setListeners();
+        initToolbarWithNavigation(getString(R.string.app_name));
+
         if (getIntent().getExtras() != null) {
             String message = getIntent().getStringExtra(Constants.EXTRA_MESSAGE);
             textView.setText(message);

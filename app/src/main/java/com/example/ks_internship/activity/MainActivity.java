@@ -1,7 +1,6 @@
 package com.example.ks_internship.activity;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 
@@ -12,9 +11,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.ks_internship.R;
+import com.example.ks_internship.activity.base.BaseActivity;
 import com.example.ks_internship.utils.Constants;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private AppCompatEditText editText;
     private AppCompatButton btnSend;
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         initViews();
         setListeners();
+        initToolbar(getString(R.string.app_name));
     }
 
     private void initViews() {
