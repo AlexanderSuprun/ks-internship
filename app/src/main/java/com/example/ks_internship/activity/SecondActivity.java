@@ -1,58 +1,30 @@
 package com.example.ks_internship.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.ks_internship.R;
 import com.example.ks_internship.activity.base.BaseActivity;
+import com.example.ks_internship.fragment.FragmentViewer;
+import com.example.ks_internship.model.Cat;
 import com.example.ks_internship.utils.Constants;
 
 public class SecondActivity extends BaseActivity {
 
-    private AppCompatTextView textView;
-    private AppCompatButton btnOk;
-    private AppCompatButton btnCancel;
+    private FragmentViewer fragmentViewer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        initViews();
-        setListeners();
         initToolbarWithNavigation(getString(R.string.app_name));
 
-        if (getIntent().getExtras() != null) {
-            String message = getIntent().getStringExtra(Constants.EXTRA_MESSAGE);
-            textView.setText(message);
+        Cat catToDisplay = getIntent().getParcelableExtra(Constants.KEY_CAT_OBJECT);
+        fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.activity_second_fragment_viewer);
+        if (catToDisplay != null && fragmentViewer != null) {
+            fragmentViewer.displayInformation(catToDisplay);
         }
-    }
-
-    private void initViews() {
-        textView = findViewById(R.id.activity_second_textview);
-        btnOk = findViewById(R.id.activity_second_btn_ok);
-        btnCancel = findViewById(R.id.activity_second_btn_cancel);
-    }
-
-    private void setListeners() {
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setResult(RESULT_OK);
-                finish();
-            }
-        });
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setResult(RESULT_CANCELED);
-                finish();
-            }
-        });
     }
 }

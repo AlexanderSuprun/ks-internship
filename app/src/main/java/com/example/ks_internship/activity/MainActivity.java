@@ -1,71 +1,91 @@
 package com.example.ks_internship.activity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.example.ks_internship.R;
 import com.example.ks_internship.activity.base.BaseActivity;
+import com.example.ks_internship.fragment.FragmentChooser;
+import com.example.ks_internship.fragment.FragmentViewer;
+import com.example.ks_internship.model.Cat;
 import com.example.ks_internship.utils.Constants;
+import com.example.ks_internship.utils.listeners.CatSelectListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends BaseActivity {
 
-    private AppCompatEditText editText;
-    private AppCompatButton btnSend;
+    private FragmentChooser fragmentChooser;
+    private FragmentViewer fragmentViewer;
+
+    private CatSelectListener catSelectListener;
+
+    private Map<String, Cat> cats = new HashMap<>();
+
+    private boolean inLandscapeMode;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initViews();
-        setListeners();
         initToolbar(getString(R.string.app_name));
-    }
+        initCats();
 
-    private void initViews() {
-        editText = findViewById(R.id.activity_main_edit_text);
-        btnSend = findViewById(R.id.activity_main_btn_send);
-    }
+        inLandscapeMode = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+        fragmentChooser = (FragmentChooser) getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_chooser);
+        if (inLandscapeMode) {
+            fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_viewer);
+        }
 
-    private void setListeners() {
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        catSelectListener = new CatSelectListener() {
             @Override
-            public void onClick(View v) {
-                openSecondActivityForResult();
+            public void onCoconutSelected() {
+                displaySelected(cats.get("Coconut"));
             }
-        });
+
+            @Override
+            public void onMortySelected() {
+                displaySelected(cats.get("Morty"));
+            }
+
+            @Override
+            public void onWoodySelected() {
+                displaySelected(cats.get("Woody"));
+            }
+
+            @Override
+            public void onCakeSelected() {
+                displaySelected(cats.get("Cake"));
+            }
+
+            @Override
+            public void onMarcusSelected() {
+                displaySelected(cats.get("Marcus"));
+            }
+        };
+        fragmentChooser.setCatSelectListener(catSelectListener);
     }
 
-    private void openSecondActivityForResult() {
-        if (TextUtils.isEmpty(editText.getText())) {
-            Toast.makeText(MainActivity.this,
-                    getString(R.string.toast_empty_text_field_text), Toast.LENGTH_SHORT).show();
-            return;
+    private void displaySelected(Cat cat) {
+        if (inLandscapeMode) {
+            fragmentViewer.displayInformation(cat);
+        } else {
+            Intent viewIntent = new Intent(MainActivity.this, SecondActivity.class);
+            viewIntent.putExtra(Constants.KEY_CAT_OBJECT, cat);
+            startActivity(viewIntent);
         }
-
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        intent.putExtra(Constants.EXTRA_MESSAGE, editText.getText().toString());
-        startActivityForResult(intent, Constants.REQUEST_CODE);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == Constants.REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(MainActivity.this,
-                        getString(R.string.toast_success_text), Toast.LENGTH_LONG).show();
-            } else if (resultCode == RESULT_CANCELED) {
-                editText.setText("");
-            }
-        }
+    private void initCats() {
+        cats.put("Coconut", new Cat("Coconut", "Scottish Fold", "White", "Male", 0.5));
+        cats.put("Morty", new Cat("Morty", "No breed", "Brown", "Male", 5));
+        cats.put("Woody", new Cat("Woody", "Bengal", "Brown", "Male", 2));
+        cats.put("Cake", new Cat("Cake", "Egyptian Mau", "Gray", "Male", 1.5));
+        cats.put("Marcus", new Cat("Marcus", "Korat", "Black", "Male", 3));
     }
 }

@@ -14,4 +14,9 @@
     <string name="toast_action_first_pressed">First action pressed</string>
     <string name="toast_action_second_pressed">Second action pressed</string>
     <string name="toast_action_third_pressed">Third action pressed</string>
+    <string name="cat_name_coconut">Coconut</string>
+    <string name="cat_name_morty">Morty</string>
+    <string name="cat_name_woody">Woody</string>
+    <string name="cat_name_cake">Cake</string>
+    <string name="cat_name_marcus">Marcus</string>
 </resources>
