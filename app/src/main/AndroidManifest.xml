@@ -18,14 +18,20 @@
         </activity>
         <activity android:name=".activity.SecondActivity">
             <intent-filter>
-                <action android:name="com.example.ks_internship.SECOND_ACTIVITY"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.ks_internship.SECOND_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.ThirdActivity">
             <intent-filter>
-                <action android:name="com.example.ks_internship.THIRD_ACTIVITY"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.ks_internship.THIRD_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.FourthActivity">
+            <intent-filter>
+                <action android:name="com.example.ks_internship.FOURTH_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

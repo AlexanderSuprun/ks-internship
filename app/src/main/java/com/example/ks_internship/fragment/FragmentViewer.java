@@ -13,8 +13,8 @@ import com.example.ks_internship.R;
 import com.example.ks_internship.model.Cat;
 
 /**
- * Shows detailed information about a cat selected in {@link FragmentChooser}
  * A simple {@link Fragment} subclass.
+ * Displays detailed information about a cat selected in {@link FragmentChooser}
  */
 public class FragmentViewer extends Fragment {
 

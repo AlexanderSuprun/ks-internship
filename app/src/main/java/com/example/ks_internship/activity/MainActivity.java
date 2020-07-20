@@ -17,6 +17,14 @@ import com.example.ks_internship.utils.listeners.CatSelectListener;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Fills HashMap with Cat objects.
+ * If in portrait mode, contains {@link FragmentChooser} and starts
+ * {@link SecondActivity} with {@link FragmentViewer} in it.
+ * Contains both {@link FragmentChooser} and {@link FragmentViewer}, if in landscape mode.
+ * Initializes interface {@link CatSelectListener} for {@link FragmentChooser}
+ */
+
 public class MainActivity extends BaseActivity {
 
     private FragmentChooser fragmentChooser;
@@ -33,7 +41,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initToolbarThirdActivityOption(getString(R.string.app_name));
+        initToolbarWithActivitiesOption(getString(R.string.app_name));
         initCats();
 
         inLandscapeMode = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
@@ -41,7 +49,7 @@ public class MainActivity extends BaseActivity {
         if (inLandscapeMode) {
             fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_viewer);
         }
-        implementListeners();
+        initListeners();
     }
 
     private void displaySelected(Cat cat) {
@@ -62,7 +70,7 @@ public class MainActivity extends BaseActivity {
         cats.put("Marcus", new Cat("Marcus", "Korat", "Black", "Male", 3));
     }
 
-    private void implementListeners() {
+    private void initListeners() {
         catSelectListener = new CatSelectListener() {
             @Override
             public void onCoconutSelected() {

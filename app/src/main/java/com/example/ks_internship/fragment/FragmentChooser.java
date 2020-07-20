@@ -14,7 +14,7 @@ import com.example.ks_internship.utils.listeners.CatSelectListener;
 
 /**
  * A simple {@link Fragment} subclass.
- * Controls the actions of the buttons in fragment_chooser
+ * Controls the actions of the buttons in fragment_chooser.xml
  */
 public class FragmentChooser extends Fragment {
 

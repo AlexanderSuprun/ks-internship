@@ -9,7 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.ks_internship.R;
+import com.example.ks_internship.activity.FourthActivity;
 import com.example.ks_internship.activity.ThirdActivity;
+
+/**
+ * Base activity abstract class with different toolbar initializations
+ */
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -20,17 +25,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         toolbar.setTitle(title);
     }
 
-    public void initToolbarThirdActivityOption(String title) {
+    public void initToolbarWithActivitiesOption(String title) {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(title);
-        toolbar.inflateMenu(R.menu.top_app_bar_third_activity_option);
+        toolbar.inflateMenu(R.menu.top_app_bar_open_activities_option);
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.toolbar_action_open_third_activity) {
-                    Intent intent = new Intent(BaseActivity.this, ThirdActivity.class);
-                    startActivity(intent);
+                switch (item.getItemId()) {
+                    case R.id.toolbar_action_open_third_activity:
+                        Intent openThirdActivityIntent = new Intent(BaseActivity.this, ThirdActivity.class);
+                        startActivity(openThirdActivityIntent);
+                        break;
+                    case R.id.toolbar_action_open_fourth_activity:
+                        Intent openFourthActivityIntent = new Intent(BaseActivity.this, FourthActivity.class);
+                        startActivity(openFourthActivityIntent);
                 }
                 return false;
             }
@@ -68,10 +78,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    public Toolbar getToolbar() {
-        return toolbar;
     }
 
     private void showToast(String message) {

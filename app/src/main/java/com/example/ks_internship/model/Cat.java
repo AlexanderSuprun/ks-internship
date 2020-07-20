@@ -5,6 +5,9 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+/**
+ * This class describes a cat
+ */
 public class Cat implements Parcelable {
 
     private String name;

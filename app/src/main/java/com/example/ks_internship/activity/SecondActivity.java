@@ -10,6 +10,10 @@ import com.example.ks_internship.fragment.FragmentViewer;
 import com.example.ks_internship.model.Cat;
 import com.example.ks_internship.utils.Constants;
 
+/**
+ * Contains {@link FragmentViewer}.
+ */
+
 public class SecondActivity extends BaseActivity {
 
     private FragmentViewer fragmentViewer;

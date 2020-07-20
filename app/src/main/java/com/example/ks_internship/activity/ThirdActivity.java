@@ -18,6 +18,9 @@ import java.util.Objects;
 
 import static com.example.ks_internship.activity.MainActivity.cats;
 
+/**
+ * Sample of the two fragments and tabs.
+ */
 public class ThirdActivity extends BaseActivity {
 
     private ViewPager viewPager;
@@ -53,7 +56,6 @@ public class ThirdActivity extends BaseActivity {
             catSelectListener = new CatSelectListener() {
                 @Override
                 public void onCoconutSelected() {
-                    Log.d("TAG_CHECK", "onCoconutSelected");
                     fragmentViewer.displayInformation(Objects.requireNonNull(cats.get("Coconut")));
                     viewPager.setCurrentItem(2, true);
                 }
