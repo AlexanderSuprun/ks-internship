@@ -28,7 +28,7 @@ public class Cat implements Parcelable {
                 "Breed: " + breed + "\n" +
                 "Color: " + color + "\n" +
                 "Gender: " + gender + "\n" +
-                "Age: " + age;
+                "Age: " + age + " y.o.";
     }
 
     @Override

@@ -19,15 +19,27 @@ import com.example.ks_internship.model.Cat;
 public class FragmentViewer extends Fragment {
 
     private AppCompatTextView textView;
+    private final static String INFO_ARG = "INFO_ARG";
 
     public FragmentViewer() {
         // Required empty public constructor
+    }
+
+    public static FragmentViewer newInstance(String info) {
+        FragmentViewer fragmentViewer = new FragmentViewer();
+        Bundle args = new Bundle();
+        args.putString(INFO_ARG, info);
+        fragmentViewer.setArguments(args);
+        return fragmentViewer;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getArguments() != null) {
+            textView.setText(getArguments().getString(INFO_ARG));
+        }
     }
 
     @Override

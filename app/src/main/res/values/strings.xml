@@ -19,4 +19,5 @@
     <string name="cat_name_woody">Woody</string>
     <string name="cat_name_cake">Cake</string>
     <string name="cat_name_marcus">Marcus</string>
+    <string name="open_third_activity">Open third activity</string>
 </resources>
