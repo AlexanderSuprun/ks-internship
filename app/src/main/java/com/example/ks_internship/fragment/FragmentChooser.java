@@ -85,10 +85,9 @@ public class FragmentChooser extends Fragment {
         }
     }
 
-    public void initAdapter(ArrayList<Cat> catArrayList, OnCatRecyclerItemClickListener listener) {
-        this.catArrayList = catArrayList;
-        adapter = new CatRecyclerAdapter(catArrayList);
-        adapter.setListener(listener);
+    public void setAdapter(CatRecyclerAdapter catRecyclerAdapter) {
+        this.adapter = catRecyclerAdapter;
+        this.catArrayList = catRecyclerAdapter.getItems();
     }
 
 }

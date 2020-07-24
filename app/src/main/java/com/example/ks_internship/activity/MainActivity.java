@@ -13,6 +13,7 @@ import com.example.ks_internship.fragment.FragmentChooser;
 import com.example.ks_internship.fragment.FragmentViewer;
 import com.example.ks_internship.model.Cat;
 import com.example.ks_internship.utils.Constants;
+import com.example.ks_internship.utils.adapter.CatRecyclerAdapter;
 import com.example.ks_internship.utils.listeners.OnCatRecyclerItemClickListener;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity {
 
     private FragmentChooser fragmentChooser;
     private FragmentViewer fragmentViewer;
+    private CatRecyclerAdapter adapter;
 
     private ArrayList<Cat> catArrayList = new ArrayList<>();
 
@@ -41,10 +43,14 @@ public class MainActivity extends BaseActivity {
         initToolbar(getString(R.string.app_name));
         initCats();
 
+        adapter = new CatRecyclerAdapter(catArrayList);
+        adapter.setListener(listener);
+
         inLandscapeMode = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         fragmentChooser = (FragmentChooser) getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_chooser);
+
         if (fragmentChooser != null) {
-            fragmentChooser.initAdapter(catArrayList, listener);
+            fragmentChooser.setAdapter(adapter);
         }
         if (inLandscapeMode) {
             fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_viewer);
