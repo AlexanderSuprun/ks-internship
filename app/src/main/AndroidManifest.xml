@@ -16,21 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SecondActivity">
+        <activity android:name=".activity.InformationActivity">
             <intent-filter>
-                <action android:name="com.example.ks_internship.SECOND_ACTIVITY" />
+                <action android:name="com.example.ks_internship.INFORMATION_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ThirdActivity">
+        <activity android:name=".activity.NewCatActivity">
             <intent-filter>
-                <action android:name="com.example.ks_internship.THIRD_ACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.FourthActivity">
-            <intent-filter>
-                <action android:name="com.example.ks_internship.FOURTH_ACTIVITY" />
+                <action android:name="com.example.ks_internship.NEW_CAT_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

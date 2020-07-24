@@ -14,14 +14,14 @@ import com.example.ks_internship.utils.Constants;
  * Contains {@link FragmentViewer}.
  */
 
-public class SecondActivity extends BaseActivity {
+public class InformationActivity extends BaseActivity {
 
     private FragmentViewer fragmentViewer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_information);
 
         initToolbarWithNavigation(getString(R.string.app_name));
 

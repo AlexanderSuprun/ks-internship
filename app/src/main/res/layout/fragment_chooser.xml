@@ -6,56 +6,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FragmentChooser">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_middle_margin"
-        android:layout_marginEnd="@dimen/default_middle_margin"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fragment_chooser_btn_coconut"
-            style="@style/AppButton"
-            android:text="@string/cat_name_coconut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_new_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="@id/recycler_view"
+        app:layout_constraintEnd_toEndOf="@id/recycler_view" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fragment_chooser_btn_morty"
-            style="@style/AppButton"
-            android:text="@string/cat_name_morty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fragment_chooser_btn_woody"
-            style="@style/AppButton"
-            android:text="@string/cat_name_woody"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fragment_chooser_btn_cake"
-            style="@style/AppButton"
-            android:text="@string/cat_name_cake"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fragment_chooser_btn_marcus"
-            style="@style/AppButton"
-            android:text="@string/cat_name_marcus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

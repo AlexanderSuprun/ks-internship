@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.ks_internship.R;
-import com.example.ks_internship.activity.FourthActivity;
-import com.example.ks_internship.activity.ThirdActivity;
 
 /**
  * Base activity abstract class with different toolbar initializations
@@ -23,28 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void initToolbar(String title) {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(title);
-    }
-
-    public void initToolbarWithActivitiesOption(String title) {
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(title);
-        toolbar.inflateMenu(R.menu.top_app_bar_open_activities_option);
-
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.toolbar_action_open_third_activity:
-                        Intent openThirdActivityIntent = new Intent(BaseActivity.this, ThirdActivity.class);
-                        startActivity(openThirdActivityIntent);
-                        break;
-                    case R.id.toolbar_action_open_fourth_activity:
-                        Intent openFourthActivityIntent = new Intent(BaseActivity.this, FourthActivity.class);
-                        startActivity(openFourthActivityIntent);
-                }
-                return false;
-            }
-        });
     }
 
     public void initToolbarWithNavigation(String title) {
