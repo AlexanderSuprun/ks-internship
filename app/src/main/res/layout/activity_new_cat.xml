@@ -44,6 +44,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/activity_new_cat_layout_input_name"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -66,6 +67,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/activity_new_cat_layout_input_breed"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -88,6 +90,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/activity_new_cat_layout_input_color"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -110,6 +113,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/activity_new_cat_layout_input_gender"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -132,6 +136,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/activity_new_cat_layout_input_age"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
