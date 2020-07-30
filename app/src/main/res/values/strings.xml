@@ -27,4 +27,6 @@
     <string name="new_cat_gender_hint">Gender</string>
     <string name="new_cat_age_hint">Age</string>
     <string name="new_cat_btn_add">Add</string>
+    <string name="enter_github_username">Enter GitHub username</string>
+    <string name="button_search_title">Search</string>
 </resources>

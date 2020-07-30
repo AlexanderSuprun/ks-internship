@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ks_internship">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.KsinternshipApp"
         android:allowBackup="true"
@@ -19,12 +21,6 @@
         <activity android:name=".activity.InformationActivity">
             <intent-filter>
                 <action android:name="com.example.ks_internship.INFORMATION_ACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.NewCatActivity">
-            <intent-filter>
-                <action android:name="com.example.ks_internship.NEW_CAT_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

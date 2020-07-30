@@ -3,7 +3,6 @@ package com.example.ks_internship.activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -13,8 +12,7 @@ import com.example.ks_internship.fragment.FragmentChooser;
 import com.example.ks_internship.fragment.FragmentViewer;
 import com.example.ks_internship.model.Cat;
 import com.example.ks_internship.utils.Constants;
-import com.example.ks_internship.utils.adapter.CatRecyclerAdapter;
-import com.example.ks_internship.utils.listeners.OnCatRecyclerItemClickListener;
+import com.example.ks_internship.utils.adapter.GitRepoRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -29,21 +27,20 @@ public class MainActivity extends BaseActivity {
 
     private FragmentChooser fragmentChooser;
     private FragmentViewer fragmentViewer;
-    private CatRecyclerAdapter adapter;
+    private GitRepoRecyclerAdapter adapter;
 
     private ArrayList<Cat> catArrayList = new ArrayList<>();
 
     private boolean inLandscapeMode;
-
+    //https://api.github.com/search/repositories?q=user:google
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initToolbar(getString(R.string.app_name));
-        initCats();
 
-        adapter = new CatRecyclerAdapter(catArrayList);
+        adapter = new GitRepoRecyclerAdapter(catArrayList);
         adapter.setListener(listener);
 
         inLandscapeMode = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
@@ -67,18 +64,4 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    private OnCatRecyclerItemClickListener listener = new OnCatRecyclerItemClickListener() {
-        @Override
-        public void onItemClick(View v, int position) {
-            displaySelected(catArrayList.get(position));
-        }
-    };
-
-    private void initCats() {
-        catArrayList.add(new Cat("Coconut", "Scottish Fold", "White", "Male", 0.5));
-        catArrayList.add(new Cat("Morty", "No breed", "Brown", "Male", 5));
-        catArrayList.add(new Cat("Woody", "Bengal", "Brown", "Male", 2));
-        catArrayList.add(new Cat("Cake", "Egyptian Mau", "Gray", "Male", 1.5));
-        catArrayList.add(new Cat("Marcus", "Korat", "Black", "Male", 3));
-    }
 }

@@ -1,6 +1,5 @@
 package com.example.ks_internship.utils.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +14,12 @@ import com.example.ks_internship.utils.listeners.OnCatRecyclerItemClickListener;
 
 import java.util.ArrayList;
 
-public class CatRecyclerAdapter extends RecyclerView.Adapter<CatRecyclerAdapter.ViewHolder> {
+public class GitRepoRecyclerAdapter extends RecyclerView.Adapter<GitRepoRecyclerAdapter.ViewHolder> {
 
     private ArrayList<Cat> cats;
     private OnCatRecyclerItemClickListener listener;
 
-    public CatRecyclerAdapter(ArrayList<Cat> cats) {
+    public GitRepoRecyclerAdapter(ArrayList<Cat> cats) {
         this.cats = cats;
     }
 
@@ -30,14 +29,14 @@ public class CatRecyclerAdapter extends RecyclerView.Adapter<CatRecyclerAdapter.
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onItemClick(view, viewHolder.getAdapterPosition());
-                }
-            }
-        });
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (listener != null) {
+//                    listener.onItemClick(view, viewHolder.getAdapterPosition());
+//                }
+//            }
+//        });
 
         return viewHolder;
     }
