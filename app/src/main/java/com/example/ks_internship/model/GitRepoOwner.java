@@ -7,10 +7,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class GitRepoOwner {
 
-    private String login;
-
     @SerializedName("avatar_url")
     private Uri avatarURL;
+    private String login;
 
     public String getLogin() {
         return login;

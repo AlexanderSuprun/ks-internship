@@ -1,91 +1,104 @@
 package com.example.ks_internship.utils.adapter;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.ks_internship.R;
-import com.example.ks_internship.model.Cat;
-import com.example.ks_internship.utils.listeners.OnCatRecyclerItemClickListener;
+import com.example.ks_internship.model.GitRepoItem;
+import com.example.ks_internship.utils.listeners.OnGitRepoRecyclerItemClickListener;
 
 import java.util.ArrayList;
 
 public class GitRepoRecyclerAdapter extends RecyclerView.Adapter<GitRepoRecyclerAdapter.ViewHolder> {
 
-    private ArrayList<Cat> cats;
-    private OnCatRecyclerItemClickListener listener;
+    private OnGitRepoRecyclerItemClickListener listener;
+    private ArrayList<GitRepoItem> gitRepoItems;
 
-    public GitRepoRecyclerAdapter(ArrayList<Cat> cats) {
-        this.cats = cats;
+    public GitRepoRecyclerAdapter(ArrayList<GitRepoItem> gitRepoItems, OnGitRepoRecyclerItemClickListener listener) {
+        this.gitRepoItems = gitRepoItems;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GitRepoRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(view);
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (listener != null) {
-//                    listener.onItemClick(view, viewHolder.getAdapterPosition());
-//                }
-//            }
-//        });
-
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.itemTitle.setText(cats.get(position).getName());
-        holder.itemDescription.setText(cats.get(position).getBreed());
+    public void onBindViewHolder(@NonNull GitRepoRecyclerAdapter.ViewHolder holder, int position) {
+        String description = gitRepoItems.get(position).getDescription();
 
-        if (position == cats.size() - 1) {
+        if (TextUtils.isEmpty(description)) {
+            holder.repoDescription.setVisibility(View.GONE);
+        } else {
+            holder.repoDescription.setText(description);
+            holder.repoDescription.setVisibility(View.VISIBLE);
+        }
+
+        holder.repoName.setText(gitRepoItems.get(position).getName());
+        Glide.with(holder.repoAvatar).load(gitRepoItems
+                .get(position)
+                .getOwner()
+                .getAvatarURL())
+                .placeholder(R.drawable.ic_photo_black_24dp)
+                .into(holder.repoAvatar);
+
+        if (position == gitRepoItems.size() - 1) {
             holder.divider.setVisibility(View.INVISIBLE);
         } else {
             holder.divider.setVisibility(View.VISIBLE);
         }
+
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(v, holder.getAdapterPosition(), gitRepoItems.get(holder.getAdapterPosition()).getUrl());
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return cats.size();
+        return gitRepoItems.size();
     }
 
-    public void setListener(OnCatRecyclerItemClickListener listener) {
-        this.listener = listener;
+    public ArrayList<GitRepoItem> getGitRepoItems() {
+        return gitRepoItems;
     }
 
-    public OnCatRecyclerItemClickListener getListener() {
-        return listener;
-    }
-
-    public void setItems(ArrayList<Cat> cats) {
-        this.cats = cats;
-    }
-
-    public ArrayList<Cat> getItems() {
-        return cats;
+    public void setGitRepoItems(ArrayList<GitRepoItem> gitRepoItems) {
+        this.gitRepoItems = gitRepoItems;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        AppCompatTextView itemTitle;
-        AppCompatTextView itemDescription;
+        AppCompatTextView repoName;
+        AppCompatTextView repoDescription;
+        AppCompatImageView repoAvatar;
         View divider;
+        View container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemTitle = itemView.findViewById(R.id.item_title);
-            itemDescription = itemView.findViewById(R.id.item_description);
+            repoName = itemView.findViewById(R.id.list_item_tv_repo_name);
+            repoDescription = itemView.findViewById(R.id.list_item_tv_repo_description);
+            repoAvatar = itemView.findViewById(R.id.list_item_iv_avatar);
             divider = itemView.findViewById(R.id.divider);
+            container = itemView;
         }
     }
 

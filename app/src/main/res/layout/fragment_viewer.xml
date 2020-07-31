@@ -3,20 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FragmentViewer">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/fragment_viewer_text_view"
+    <WebView
+        android:id="@+id/fragment_viewer_webview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textAlignment="center"
-        android:textSize="@dimen/default_text_size"
-        android:lineSpacingMultiplier="1.5"
-        tools:text="Text view" />
+        android:layout_height="match_parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
