@@ -2,11 +2,15 @@ package com.example.ks_internship.model;
 
 import android.net.Uri;
 
+import androidx.room.TypeConverters;
+
+import com.example.ks_internship.utils.database.UriConverter;
 import com.google.gson.annotations.SerializedName;
 
 
 public class GitRepoOwner {
 
+    @TypeConverters({UriConverter.class})
     @SerializedName("avatar_url")
     private Uri avatarURL;
     private String login;

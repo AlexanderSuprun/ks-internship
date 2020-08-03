@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.lifecycle.Observer;
 
 import com.example.ks_internship.R;
 import com.example.ks_internship.activity.base.BaseActivity;
@@ -42,7 +43,7 @@ public class MainActivity extends BaseActivity {
     private FragmentViewer fragmentViewer;
     private GitRepoRecyclerAdapter adapter;
 
-    private ArrayList<GitRepoItem> gitRepoItems = new ArrayList<>();
+    private ArrayList<GitRepoItem> items = new ArrayList<>();
 
     private boolean inLandscapeMode;
 
@@ -53,7 +54,7 @@ public class MainActivity extends BaseActivity {
 
         initToolbar(getString(R.string.app_name));
 
-        adapter = new GitRepoRecyclerAdapter(gitRepoItems, new OnGitRepoRecyclerItemClickListener() {
+        adapter = new GitRepoRecyclerAdapter(items, new OnGitRepoRecyclerItemClickListener() {
             @Override
             public void onItemClick(View v, int position, Uri url) {
                 openRepo(url);
@@ -76,6 +77,15 @@ public class MainActivity extends BaseActivity {
         if (inLandscapeMode) {
             fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_viewer);
         }
+
+        getDatabase().repoItemDao().getAllRecords().observe(this, new Observer<List<GitRepoItem>>() {
+            @Override
+            public void onChanged(List<GitRepoItem> gitRepoItems) {
+                items.clear();
+                items.addAll(gitRepoItems);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void openRepo(Uri url) {
@@ -93,9 +103,7 @@ public class MainActivity extends BaseActivity {
         RestClient.getInstance().getService().searchReposByUsername(username).enqueue(new ApiCallback<List<GitRepoItem>>() {
             @Override
             public void success(Response<List<GitRepoItem>> response) {
-                gitRepoItems.clear();
-                gitRepoItems.addAll(response.body());
-                adapter.notifyDataSetChanged();
+                updateList(response.body());
                 fragmentChooser.hideLoaderBlock();
             }
 
@@ -109,6 +117,11 @@ public class MainActivity extends BaseActivity {
                 fragmentChooser.hideLoaderBlock();
             }
         });
+    }
+
+    private void updateList(List<GitRepoItem> itemsToUpdate) {
+        getDatabase().repoItemDao().deleteAllRecords();
+        getDatabase().repoItemDao().insert(itemsToUpdate);
     }
 
     private void makeErrorToast(String errorMessage) {

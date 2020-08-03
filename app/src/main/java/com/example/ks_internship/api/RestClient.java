@@ -26,6 +26,7 @@ public class RestClient {
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Uri.class, new UriDeserializer())
+                .registerTypeAdapter(Uri.class, new UriSerializer())
                 .create();
 
         retrofit = new Retrofit.Builder()

@@ -2,15 +2,42 @@ package com.example.ks_internship.model;
 
 import android.net.Uri;
 
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.ks_internship.utils.database.UriConverter;
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "gitRepoItems")
+@TypeConverters({UriConverter.class})
 public class GitRepoItem {
 
+    @PrimaryKey(autoGenerate = true)
+    int id;
     @SerializedName("html_url")
     private Uri url;
     private String name;
     private String description;
+    @Embedded
     private GitRepoOwner owner;
+
+    public GitRepoItem(int id, Uri url, String name, String description, GitRepoOwner owner) {
+        this.id = id;
+        this.url = url;
+        this.name = name;
+        this.description = description;
+        this.owner = owner;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Uri getUrl() {
         return url;
@@ -51,7 +78,8 @@ public class GitRepoItem {
 
         GitRepoItem that = (GitRepoItem) o;
 
-        return url.equals(that.url) &&
+        return id == that.id &&
+                url.equals(that.url) &&
                 name.equals(that.name) &&
                 description.equals(that.description) &&
                 owner.equals(that.owner);
@@ -63,6 +91,7 @@ public class GitRepoItem {
         result = 31 * result + name.hashCode();
         result = 31 * result + description.hashCode();
         result = 31 * result + owner.hashCode();
+        result = 31 * result + id;
         return result;
     }
 }

@@ -1,32 +1,7 @@
 <resources>
     <string name="app_name">KeepSolid Internship</string>
-    <string name="favorite">Favorite</string>
-    <string name="action_first">Action 1</string>
-    <string name="action_second">Action 2</string>
-    <string name="action_third">Action 3</string>
-    <string name="toast_favorite_pressed">Favorite pressed</string>
-    <string name="toast_action_first_pressed">First action pressed</string>
-    <string name="toast_action_second_pressed">Second action pressed</string>
     <string name="toast_action_third_pressed">Third action pressed</string>
-    <string name="cat_name_coconut">Coconut</string>
-    <string name="cat_name_morty">Morty</string>
-    <string name="cat_name_woody">Woody</string>
-    <string name="cat_name_cake">Cake</string>
-    <string name="cat_name_marcus">Marcus</string>
-    <string name="open_third_activity_title">Open third activity</string>
-    <string name="open_fourth_activity_title">Open fourth activity</string>
-    <string name="fragment_two_title">Fragment Two</string>
-    <string name="fragment_one_title">Fragment One</string>
-    <string name="btn_add_title">Add</string>
-    <string name="btn_replace_title">Replace</string>
-    <string name="btn_remove_title">Remove</string>
-    <string name="adding_new_cat_title">Adding new cat</string>
-    <string name="new_cat_name_hint">Name</string>
-    <string name="new_cat_breed_hint">Breed</string>
-    <string name="new_cat_color_hint">Color</string>
-    <string name="new_cat_gender_hint">Gender</string>
-    <string name="new_cat_age_hint">Age</string>
-    <string name="new_cat_btn_add">Add</string>
     <string name="enter_github_username">Enter GitHub username</string>
     <string name="button_search_title">Search</string>
+    <string name="top_bar_option_history">History</string>
 </resources>
