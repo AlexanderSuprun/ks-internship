@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +20,7 @@ import android.widget.TextView;
 import com.example.ks_internship.R;
 import com.example.ks_internship.utils.KeyboardUtils;
 import com.example.ks_internship.utils.adapter.GitRepoRecyclerAdapter;
-import com.example.ks_internship.utils.listeners.OnGitRepoSearchAction;
+import com.example.ks_internship.utils.listener.OnGitRepoSearchAction;
 
 
 /**

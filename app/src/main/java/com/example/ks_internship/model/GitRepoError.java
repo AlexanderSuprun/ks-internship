@@ -1,5 +1,8 @@
 package com.example.ks_internship.model;
 
+import android.app.Application;
+import android.widget.Toast;
+
 import com.google.gson.annotations.SerializedName;
 
 public class GitRepoError {

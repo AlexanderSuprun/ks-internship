@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ks_internship.R;
-import com.example.ks_internship.utils.listeners.OnHistoryRecyclerItemClickListener;
+import com.example.ks_internship.utils.listener.OnHistoryRecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

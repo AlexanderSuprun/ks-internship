@@ -1,4 +1,4 @@
-package com.example.ks_internship.utils.listeners;
+package com.example.ks_internship.utils.listener;
 
 import android.net.Uri;
 import android.view.View;

@@ -18,7 +18,7 @@ public class WebViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
-        initToolbar(getString(R.string.app_name));
+        initToolbarWithNavigation(getString(R.string.github_repository_title));
 
         fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.activity_webview_fragment_viewer);
         if (fragmentViewer != null && getIntent().getExtras() != null) {

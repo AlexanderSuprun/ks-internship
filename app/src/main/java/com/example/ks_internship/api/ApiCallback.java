@@ -13,6 +13,10 @@ import retrofit2.Callback;
 import retrofit2.Converter;
 import retrofit2.Response;
 
+/**
+ * Custom Callback class for Retrofit.
+ * @param <T> Successful response body type.
+ */
 public abstract class ApiCallback<T> implements Callback<T> {
 
     public abstract void success(Response<T> response);

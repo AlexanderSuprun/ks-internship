@@ -3,7 +3,6 @@ package com.example.ks_internship.activity.base;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.ks_internship.R;
 import com.example.ks_internship.activity.HistoryActivity;
 import com.example.ks_internship.app.KsinternshipApp;
+import com.example.ks_internship.utils.AppPrefsManager;
 import com.example.ks_internship.utils.database.AppDatabase;
 
 /**
@@ -38,14 +38,37 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
     }
 
-    public void initToolbarWithHistoryOption(String title) {
+    public void initToolbarWithClearHistoryAction(String title) {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(title);
-        toolbar.inflateMenu(R.menu.top_app_bar_history_option);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        toolbar.inflateMenu(R.menu.top_app_bar_clear_history_action);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (R.id.toolbar_option_history == item.getItemId()) {
+                if (item.getItemId() == R.id.toolbar_action_clear_history) {
+                    AppPrefsManager.clearHistoryCache(BaseActivity.this);
+                    onBackPressed();
+                }
+                return false;
+            }
+        });
+    }
+
+    public void initToolbarWithHistoryAction(String title) {
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(title);
+        toolbar.inflateMenu(R.menu.top_app_bar_history_action);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.toolbar_action_history) {
                     Intent historyIntent = new Intent(BaseActivity.this, HistoryActivity.class);
                     startActivity(historyIntent);
                 }

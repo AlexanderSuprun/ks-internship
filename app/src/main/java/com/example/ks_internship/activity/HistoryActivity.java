@@ -1,6 +1,5 @@
 package com.example.ks_internship.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +13,14 @@ import com.example.ks_internship.activity.base.BaseActivity;
 import com.example.ks_internship.utils.AppPrefsManager;
 import com.example.ks_internship.utils.Constants;
 import com.example.ks_internship.utils.adapter.HistoryRecyclerAdapter;
-import com.example.ks_internship.utils.listeners.OnHistoryRecyclerItemClickListener;
+import com.example.ks_internship.utils.listener.OnHistoryRecyclerItemClickListener;
 
 
 import java.util.ArrayList;
-import java.util.List;
+
+/**
+ * Contains search history
+ */
 
 public class HistoryActivity extends BaseActivity {
 
@@ -31,7 +33,7 @@ public class HistoryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        initToolbarWithNavigation(getString(R.string.top_bar_title_search_history));
+        initToolbarWithClearHistoryAction(getString(R.string.top_bar_title_search_history));
         recyclerView = findViewById(R.id.activity_history_rv);
         historyItems = (ArrayList<String>) AppPrefsManager.getCachedSearchHistory(this);
 

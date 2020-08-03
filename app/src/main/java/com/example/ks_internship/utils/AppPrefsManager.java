@@ -2,12 +2,15 @@ package com.example.ks_internship.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+/**
+ * Manages {@link SharedPreferences}
+ */
 
 public class AppPrefsManager {
 
@@ -35,5 +38,9 @@ public class AppPrefsManager {
             historyItems = new ArrayList<>();
         }
         return historyItems;
+    }
+
+    public static void clearHistoryCache(Context context) {
+        getPrefs(context).edit().remove(Constants.PREFS_SEARCH_HISTORY).apply();
     }
 }

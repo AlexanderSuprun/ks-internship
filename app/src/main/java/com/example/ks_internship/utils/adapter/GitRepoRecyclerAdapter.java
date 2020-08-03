@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.ks_internship.R;
 import com.example.ks_internship.model.GitRepoItem;
-import com.example.ks_internship.utils.listeners.OnGitRepoRecyclerItemClickListener;
+import com.example.ks_internship.utils.listener.OnGitRepoRecyclerItemClickListener;
 
 import java.util.ArrayList;
 

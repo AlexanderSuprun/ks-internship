@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,8 +23,8 @@ import com.example.ks_internship.model.GitRepoItem;
 import com.example.ks_internship.utils.AppPrefsManager;
 import com.example.ks_internship.utils.Constants;
 import com.example.ks_internship.utils.adapter.GitRepoRecyclerAdapter;
-import com.example.ks_internship.utils.listeners.OnGitRepoRecyclerItemClickListener;
-import com.example.ks_internship.utils.listeners.OnGitRepoSearchAction;
+import com.example.ks_internship.utils.listener.OnGitRepoRecyclerItemClickListener;
+import com.example.ks_internship.utils.listener.OnGitRepoSearchAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,6 @@ import java.util.List;
 import retrofit2.Response;
 
 /**
- * Fills HashMap with Cat objects.
  * If in portrait mode, contains {@link FragmentChooser} and starts
  * {@link WebViewActivity} with {@link FragmentViewer} in it.
  * Contains both {@link FragmentChooser} and {@link FragmentViewer}, if in landscape mode.
@@ -54,7 +52,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initToolbarWithHistoryOption(getString(R.string.app_name));
+        initToolbarWithHistoryAction(getString(R.string.app_name));
 
         adapter = new GitRepoRecyclerAdapter(items, new OnGitRepoRecyclerItemClickListener() {
             @Override
@@ -90,7 +88,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        if (getIntent().getExtras() != null) {
+        if (getIntent().getStringExtra(Constants.HISTORY_TITLE) != null) {
             String username = getIntent().getStringExtra(Constants.HISTORY_TITLE);
             loadRepos(username);
             fragmentChooser.setUsernameInput(username);
