@@ -121,4 +121,8 @@ public class FragmentChooser extends Fragment {
             loaderBlock.setVisibility(View.GONE);
         }
     }
+
+    public void setUsernameInput(String username) {
+        usernameInput.setText(username);
+    }
 }

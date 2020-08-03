@@ -7,27 +7,27 @@
     android:background="?android:attr/selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/list_item_iv_avatar"
+        android:id="@+id/repo_list_item_iv_avatar"
         android:layout_width="@dimen/default_avatar_width"
         android:layout_height="@dimen/default_avatar_height"
         android:layout_margin="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/list_item_ll"
+        app:layout_constraintEnd_toStartOf="@id/repo_list_item_ll"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
-        android:id="@+id/list_item_ll"
+        android:id="@+id/repo_list_item_ll"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@id/list_item_iv_avatar"
+        app:layout_constraintStart_toEndOf="@id/repo_list_item_iv_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" >
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/list_item_tv_repo_name"
+            android:id="@+id/repo_list_item_tv_repo_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_size"
@@ -36,19 +36,19 @@
             android:paddingEnd="@dimen/default_padding"
             android:layout_marginBottom="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/list_item_tv_repo_description"
+            app:layout_constraintBottom_toTopOf="@id/repo_list_item_tv_repo_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Item title" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/list_item_tv_repo_description"
+            android:id="@+id/repo_list_item_tv_repo_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:paddingStart="@dimen/default_padding"
             android:paddingEnd="@dimen/default_padding"
-            app:layout_constraintTop_toBottomOf="@id/list_item_tv_repo_name"
+            app:layout_constraintTop_toBottomOf="@id/repo_list_item_tv_repo_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -30,7 +30,7 @@ public class GitRepoRecyclerAdapter extends RecyclerView.Adapter<GitRepoRecycler
     @NonNull
     @Override
     public GitRepoRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.repo_list_item, parent, false);
 
         return new ViewHolder(view);
     }
@@ -94,9 +94,9 @@ public class GitRepoRecyclerAdapter extends RecyclerView.Adapter<GitRepoRecycler
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            repoName = itemView.findViewById(R.id.list_item_tv_repo_name);
-            repoDescription = itemView.findViewById(R.id.list_item_tv_repo_description);
-            repoAvatar = itemView.findViewById(R.id.list_item_iv_avatar);
+            repoName = itemView.findViewById(R.id.repo_list_item_tv_repo_name);
+            repoDescription = itemView.findViewById(R.id.repo_list_item_tv_repo_description);
+            repoAvatar = itemView.findViewById(R.id.repo_list_item_iv_avatar);
             divider = itemView.findViewById(R.id.divider);
             container = itemView;
         }

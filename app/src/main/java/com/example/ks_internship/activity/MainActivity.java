@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.example.ks_internship.fragment.FragmentChooser;
 import com.example.ks_internship.fragment.FragmentViewer;
 import com.example.ks_internship.model.GitRepoError;
 import com.example.ks_internship.model.GitRepoItem;
+import com.example.ks_internship.utils.AppPrefsManager;
 import com.example.ks_internship.utils.Constants;
 import com.example.ks_internship.utils.adapter.GitRepoRecyclerAdapter;
 import com.example.ks_internship.utils.listeners.OnGitRepoRecyclerItemClickListener;
@@ -52,7 +54,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initToolbar(getString(R.string.app_name));
+        initToolbarWithHistoryOption(getString(R.string.app_name));
 
         adapter = new GitRepoRecyclerAdapter(items, new OnGitRepoRecyclerItemClickListener() {
             @Override
@@ -70,6 +72,7 @@ public class MainActivity extends BaseActivity {
             fragmentChooser.setSearchListener(new OnGitRepoSearchAction() {
                 @Override
                 public void onSearchButtonClick(AppCompatEditText usernameInput) {
+                    AppPrefsManager.cacheSearchHistory(MainActivity.this, usernameInput.getText().toString());
                     loadRepos(usernameInput.getText().toString());
                 }
             });
@@ -86,6 +89,12 @@ public class MainActivity extends BaseActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+
+        if (getIntent().getExtras() != null) {
+            String username = getIntent().getStringExtra(Constants.HISTORY_TITLE);
+            loadRepos(username);
+            fragmentChooser.setUsernameInput(username);
+        }
     }
 
     private void openRepo(Uri url) {

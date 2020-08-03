@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.ks_internship.R;
+import com.example.ks_internship.activity.HistoryActivity;
 import com.example.ks_internship.app.KsinternshipApp;
 import com.example.ks_internship.utils.database.AppDatabase;
 
@@ -35,19 +36,18 @@ public abstract class BaseActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
     }
 
     public void initToolbarWithHistoryOption(String title) {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(title);
-
         toolbar.inflateMenu(R.menu.top_app_bar_history_option);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (R.id.toolbar_option_history == item.getItemId()) {
-                    //TODO call activity with history
+                    Intent historyIntent = new Intent(BaseActivity.this, HistoryActivity.class);
+                    startActivity(historyIntent);
                 }
                 return false;
             }
