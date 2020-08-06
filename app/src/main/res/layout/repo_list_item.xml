@@ -30,6 +30,8 @@
             android:id="@+id/repo_list_item_tv_repo_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textSize="@dimen/default_text_size"
             android:textStyle="bold"
             android:paddingStart="@dimen/default_padding"
