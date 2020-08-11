@@ -14,13 +14,13 @@ import java.util.List;
 
 public class AppPrefsManager {
 
-    private static List<String> historyItems;
+    private List<String> historyItems;
 
-    private static SharedPreferences getPrefs(Context context) {
+    private SharedPreferences getPrefs(Context context) {
         return context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
     }
 
-    public static void cacheSearchHistory(Context context, String name) {
+    public void cacheSearchHistory(Context context, String name) {
         historyItems = getCachedSearchHistory(context);
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < historyItems.size(); i++) {
@@ -30,7 +30,7 @@ public class AppPrefsManager {
         getPrefs(context).edit().putString(Constants.PREFS_SEARCH_HISTORY, stringBuilder.toString()).apply();
     }
 
-    public static List<String> getCachedSearchHistory(Context context) {
+    public List<String> getCachedSearchHistory(Context context) {
         String cache = getPrefs(context).getString(Constants.PREFS_SEARCH_HISTORY, null);
         if (cache != null) {
             historyItems = new ArrayList<>(Arrays.asList(cache.split(",")));
@@ -40,7 +40,7 @@ public class AppPrefsManager {
         return historyItems;
     }
 
-    public static void clearHistoryCache(Context context) {
+    public void clearHistoryCache(Context context) {
         getPrefs(context).edit().remove(Constants.PREFS_SEARCH_HISTORY).apply();
     }
 }

@@ -6,6 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FragmentChooser">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout" />
+
     <LinearLayout
         android:id="@+id/fragment_chooser_ll_search"
         android:layout_width="match_parent"
@@ -14,7 +18,7 @@
         android:layout_margin="@dimen/default_middle_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/fragment_chooser_recycler_view" >
 
     <androidx.appcompat.widget.AppCompatEditText

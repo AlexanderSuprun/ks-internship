@@ -6,6 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FragmentViewer">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout" />
+
     <ProgressBar
         android:id="@+id/fragment_viewer_pb"
         style="?android:attr/progressBarStyleHorizontal"
@@ -16,7 +20,7 @@
         android:progress="100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/fragment_viewer_webview"/>
 
     <WebView

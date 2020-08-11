@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.example.ks_internship.R;
-import com.example.ks_internship.activity.base.BaseActivity;
+import com.example.ks_internship.base.BaseActivity;
 import com.example.ks_internship.fragment.FragmentViewer;
 import com.example.ks_internship.utils.Constants;
 

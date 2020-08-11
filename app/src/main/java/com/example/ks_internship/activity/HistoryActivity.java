@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ks_internship.R;
-import com.example.ks_internship.activity.base.BaseActivity;
+import com.example.ks_internship.base.BaseActivity;
 import com.example.ks_internship.utils.AppPrefsManager;
 import com.example.ks_internship.utils.Constants;
 import com.example.ks_internship.utils.adapter.HistoryRecyclerAdapter;
@@ -33,7 +33,7 @@ public class HistoryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        initToolbarWithClearHistoryAction(getString(R.string.top_bar_title_search_history));
+        initToolbarWithClearHistoryAction(getString(R.string.toolbar_title_search_history));
         recyclerView = findViewById(R.id.activity_history_rv);
         historyItems = (ArrayList<String>) AppPrefsManager.getCachedSearchHistory(this);
 

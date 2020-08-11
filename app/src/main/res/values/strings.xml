@@ -4,7 +4,7 @@
     <string name="enter_github_username">Enter GitHub username</string>
     <string name="button_search_title">Search</string>
     <string name="toolbar_option_history">History</string>
-    <string name="top_bar_title_search_history">Search history</string>
+    <string name="toolbar_title_search_history">Search history</string>
     <string name="toolbar_option_clear_history_title">Clear history</string>
     <string name="github_repository_title">GitHub Repository</string>
 </resources>

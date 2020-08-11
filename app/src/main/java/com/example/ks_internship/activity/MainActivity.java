@@ -13,7 +13,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.lifecycle.Observer;
 
 import com.example.ks_internship.R;
-import com.example.ks_internship.activity.base.BaseActivity;
+import com.example.ks_internship.base.BaseActivity;
 import com.example.ks_internship.api.ApiCallback;
 import com.example.ks_internship.api.RestClient;
 import com.example.ks_internship.fragment.FragmentChooser;
@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initToolbarWithHistoryAction(getString(R.string.app_name));
+//        initToolbarWithHistoryAction(getString(R.string.app_name));
 
         adapter = new GitRepoRecyclerAdapter(items, new OnGitRepoRecyclerItemClickListener() {
             @Override
