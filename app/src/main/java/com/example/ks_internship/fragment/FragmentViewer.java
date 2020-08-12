@@ -5,13 +5,11 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.example.ks_internship.R;
@@ -37,7 +35,7 @@ public class FragmentViewer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_viewer, container, false);
+        View view = inflater.inflate(R.layout.fragment_webview, container, false);
         webView = view.findViewById(R.id.fragment_viewer_webview);
         progressBar = view.findViewById(R.id.fragment_viewer_pb);
 

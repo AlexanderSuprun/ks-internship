@@ -7,6 +7,8 @@ import com.example.ks_internship.base.BasePresenter;
 import com.example.ks_internship.base.BaseView;
 import com.example.ks_internship.model.GitRepoItem;
 
+import java.util.List;
+
 public interface MainContract {
 
     interface View extends BaseView<Presenter> {
@@ -21,16 +23,14 @@ public interface MainContract {
 
         void showRequestError(@NonNull String message);
 
-        void observeItems(LiveData<GitRepoItem> itemsLiveData);
+        void observeItems(LiveData<List<GitRepoItem>> itemsLiveData);
 
-        void stopObserving(LiveData<GitRepoItem> liveRepoData);
+        void stopObserving(LiveData<List<GitRepoItem>> liveRepoData);
     }
 
     interface Presenter extends BasePresenter<View> {
 
         void searchRepos(@NonNull String query);
-
-
 
     }
 

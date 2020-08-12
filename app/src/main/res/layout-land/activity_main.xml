@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toStartOf="@id/activity_main_fragment_viewer"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout="@layout/fragment_chooser" />
+        tools:layout="@layout/fragment_main" />
     
     <fragment
         android:id="@+id/activity_main_fragment_viewer"
@@ -32,6 +32,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/activity_main_fragment_chooser"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout="@layout/fragment_viewer" />
+        tools:layout="@layout/fragment_webview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

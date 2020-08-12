@@ -49,7 +49,7 @@ public class FragmentChooser extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chooser, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         initViews(view);
         return view;
     }
@@ -74,7 +74,7 @@ public class FragmentChooser extends Fragment {
     }
 
     private void initViews(View view) {
-        recyclerView = view.findViewById(R.id.fragment_chooser_recycler_view);
+        recyclerView = view.findViewById(R.id.fragment_chooser_rv);
         loaderBlock = view.findViewById(R.id.fragment_chooser_loader_block);
         usernameInput = view.findViewById(R.id.fragment_chooser_et_username);
         btnSearch = view.findViewById(R.id.fragment_chooser_btn_search);

@@ -1,22 +1,16 @@
 package com.example.ks_internship.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ks_internship.R;
 import com.example.ks_internship.base.BaseActivity;
+import com.example.ks_internship.screen.history.HistoryContract;
+import com.example.ks_internship.screen.history.HistoryFragment;
+import com.example.ks_internship.screen.history.HistoryPresenter;
 import com.example.ks_internship.utils.AppPrefsManager;
-import com.example.ks_internship.utils.Constants;
-import com.example.ks_internship.utils.adapter.HistoryRecyclerAdapter;
-import com.example.ks_internship.utils.listener.OnHistoryRecyclerItemClickListener;
-
-
-import java.util.ArrayList;
 
 /**
  * Contains search history
@@ -24,31 +18,29 @@ import java.util.ArrayList;
 
 public class HistoryActivity extends BaseActivity {
 
-    RecyclerView recyclerView;
-    HistoryRecyclerAdapter adapter;
-    ArrayList<String> historyItems;
+    private FrameLayout fragmentContainer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        initToolbarWithClearHistoryAction(getString(R.string.toolbar_title_search_history));
-        recyclerView = findViewById(R.id.activity_history_rv);
-        historyItems = (ArrayList<String>) AppPrefsManager.getCachedSearchHistory(this);
+        HistoryContract.Presenter presenter;
+        AppPrefsManager prefsManager = new AppPrefsManager(getApplicationContext());
+        fragmentContainer = findViewById(R.id.fragment_container);
+        presenter = new HistoryPresenter(prefsManager);
 
-        adapter = new HistoryRecyclerAdapter(historyItems, new OnHistoryRecyclerItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position, String name) {
-                Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
-                intent.putExtra(Constants.HISTORY_TITLE, historyItems.get(position));
-                startActivity(intent);
-            }
-        });
+        HistoryFragment historyFragment = new HistoryFragment();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        if (!getSupportFragmentManager().getFragments().isEmpty()) {
+            historyFragment = (HistoryFragment) getSupportFragmentManager().findFragmentById(fragmentContainer.getId());
+        } else {
+            getSupportFragmentManager().beginTransaction().add(fragmentContainer.getId(), historyFragment).commit();
+        }
+
+        if (historyFragment != null) {
+            historyFragment.setPresenter(presenter);
+        }
 
     }
 }

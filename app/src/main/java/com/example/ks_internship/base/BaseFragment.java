@@ -1,5 +1,6 @@
 package com.example.ks_internship.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -35,6 +36,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void initToolbarWithClearHistoryAction(String title, View parentView) {
+        AppPrefsManager prefsManager = new AppPrefsManager(getActivity().getApplicationContext());
         toolbar = parentView.findViewById(R.id.toolbar);
         toolbar.setTitle(title);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
@@ -49,7 +51,7 @@ public abstract class BaseFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.toolbar_action_clear_history) {
-                    AppPrefsManager.clearHistoryCache(getActivity());
+                    prefsManager.clearHistoryCache();
                     getActivity().onBackPressed();
                 }
                 return false;
