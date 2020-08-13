@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,16 +38,24 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     private RecyclerView recyclerView;
     private View loaderBlock;
-
     private AppCompatEditText usernameInput;
     private AppCompatButton btnSearch;
     private GitRepoRecyclerAdapter adapter;
     private ArrayList<GitRepoItem> gitRepoItems;
-
     private MainContract.Presenter presenter;
+
+    private String receivedHistoryTitle;
 
     public MainFragment() {
         // Required empty public constructor
+    }
+
+    public static MainFragment newInstance(String historyTitle) {
+        MainFragment fragment = new MainFragment();
+        Bundle args = new Bundle();
+        args.putString(Constants.HISTORY_TITLE, historyTitle);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -57,6 +66,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getArguments() != null) {
+            this.receivedHistoryTitle = getArguments().getString(Constants.HISTORY_TITLE);
+        }
 
     }
 
@@ -100,6 +113,14 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         presenter.takeView(this);
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (!TextUtils.isEmpty(receivedHistoryTitle) && receivedHistoryTitle != null) {
+            presenter.searchRepos(receivedHistoryTitle);
+        }
     }
 
     @Override
@@ -161,9 +182,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     }
 
     private void initViews(View v) {
-        loaderBlock = v.findViewById(R.id.fragment_chooser_loader_block);
-        recyclerView = v.findViewById(R.id.fragment_chooser_rv);
-        usernameInput = v.findViewById(R.id.fragment_chooser_et_username);
-        btnSearch = v.findViewById(R.id.fragment_chooser_btn_search);
+        loaderBlock = v.findViewById(R.id.fragment_main_loader_block);
+        recyclerView = v.findViewById(R.id.fragment_main_rv);
+        usernameInput = v.findViewById(R.id.fragment_main_et_username);
+        btnSearch = v.findViewById(R.id.fragment_main_btn_search);
     }
 }

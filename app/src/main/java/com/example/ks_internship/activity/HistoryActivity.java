@@ -27,7 +27,7 @@ public class HistoryActivity extends BaseActivity {
 
         HistoryContract.Presenter presenter;
         AppPrefsManager prefsManager = new AppPrefsManager(getApplicationContext());
-        fragmentContainer = findViewById(R.id.fragment_container);
+        fragmentContainer = findViewById(R.id.fragment_main_container);
         presenter = new HistoryPresenter(prefsManager);
 
         HistoryFragment historyFragment = new HistoryFragment();

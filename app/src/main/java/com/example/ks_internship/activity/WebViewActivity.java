@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 
 import com.example.ks_internship.R;
 import com.example.ks_internship.base.BaseActivity;
-import com.example.ks_internship.screen.main.MainFragment;
 import com.example.ks_internship.screen.webview.WebViewContract;
 import com.example.ks_internship.screen.webview.WebViewFragment;
 import com.example.ks_internship.screen.webview.WebViewPresenter;
@@ -23,7 +22,7 @@ public class WebViewActivity extends BaseActivity {
         setContentView(R.layout.activity_webview);
 
         WebViewContract.Presenter presenter = new WebViewPresenter();
-        fragmentContainer = findViewById(R.id.fragment_container);
+        fragmentContainer = findViewById(R.id.fragment_main_container);
         WebViewFragment webViewFragment = new WebViewFragment();
 
         if (!getSupportFragmentManager().getFragments().isEmpty()) {

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.FragmentChooser">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout" />
 
     <LinearLayout
-        android:id="@+id/fragment_chooser_ll_search"
+        android:id="@+id/fragment_main_ll_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -19,10 +17,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toTopOf="@id/fragment_chooser_rv" >
+        app:layout_constraintBottom_toTopOf="@id/fragment_main_rv" >
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/fragment_chooser_et_username"
+        android:id="@+id/fragment_main_et_username"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:imeOptions="actionGo"
@@ -32,7 +30,7 @@
         android:hint="@string/enter_github_username" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/fragment_chooser_btn_search"
+        android:id="@+id/fragment_main_btn_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -42,29 +40,29 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_chooser_rv"
+        android:id="@+id/fragment_main_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_chooser_ll_search"
+        app:layout_constraintTop_toBottomOf="@id/fragment_main_ll_search"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
-        android:id="@+id/fragment_chooser_loader_block"
+        android:id="@+id/fragment_main_loader_block"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/loader_background"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
         <ProgressBar
-            android:id="@+id/fragment_chooser_pb"
+            android:id="@+id/fragment_main_pb"
             android:layout_width="@dimen/progress_bar_width"
             android:layout_height="wrap_content" />
 

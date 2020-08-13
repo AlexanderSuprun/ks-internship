@@ -1,7 +1,6 @@
 package com.example.ks_internship.screen.main;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
 import com.example.ks_internship.api.ApiCallback;
@@ -58,7 +57,6 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void takeView(MainContract.View view) {
         this.view = view;
-
         itemsLiveData = database.repoItemDao().getAllRecords();
         view.observeItems(itemsLiveData);
     }
