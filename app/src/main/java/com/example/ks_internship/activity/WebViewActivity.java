@@ -22,7 +22,7 @@ public class WebViewActivity extends BaseActivity {
         setContentView(R.layout.activity_webview);
 
         WebViewContract.Presenter presenter = new WebViewPresenter();
-        fragmentContainer = findViewById(R.id.fragment_main_container);
+        fragmentContainer = findViewById(R.id.fragment_container);
         WebViewFragment webViewFragment = new WebViewFragment();
 
         if (!getSupportFragmentManager().getFragments().isEmpty()) {

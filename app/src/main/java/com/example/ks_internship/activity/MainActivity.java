@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         MainContract.Presenter presenter;
-        fragmentContainer = findViewById(R.id.fragment_main_container);
+        fragmentContainer = findViewById(R.id.fragment_container);
 
         AppPrefsManager prefsManager = new AppPrefsManager(getApplicationContext());
         MainFragment mainFragment = new MainFragment();
