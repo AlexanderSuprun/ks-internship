@@ -1,2 +1,2 @@
 # ks-internship
-KeepSolid internship
+KeepSolid internship app
